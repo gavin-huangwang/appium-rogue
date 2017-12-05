@@ -2,40 +2,40 @@
 
 from utils.config import Config
 from exception.exceptions import NotFoundLocatorError
-from utils.deorators import locator_by
+from utils.deorators import locator
 from base.action import ElementActions
 
 
 class LoginPage:
-    @locator_by()
+    @locator()
     def img_guide_page(self):
         pass
 
-    @locator_by()
+    @locator()
     def btn_guide_start(self):
         pass
 
-    @locator_by()
+    @locator()
     def text_username(self):
         pass
 
-    @locator_by()
-    def test_password(self):
+    @locator()
+    def text_password(self):
         pass
 
-    @locator_by()
+    @locator()
     def btn_login(self):
         pass
 
-    @locator_by()
+    @locator()
     def text_error_msg(self):
         pass
 
-    @locator_by()
+    @locator()
     def tv_forget_password(self):
         pass
 
-    @locator_by()
+    @locator()
     def tv_login_place_holder(self):
         pass
 

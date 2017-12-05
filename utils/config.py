@@ -3,7 +3,8 @@ import pytest
 from configparser import ConfigParser
 import os
 import unittest
-from utils import log
+import utils.log
+import logging
 from xml.dom.minidom import parse
 import xml.dom.minidom
 import xml.sax
@@ -13,6 +14,8 @@ BASE_DEVICE_CONFIG_PATH = str(
     os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "files/devices"))) + "/"
 BASE_LOCATOR_CONFIG_PATH = str(
     os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "files/locator"))) + "/"
+
+logger = logging.getLogger(__name__)
 
 
 def singleton(class_):

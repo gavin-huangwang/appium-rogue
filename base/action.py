@@ -4,8 +4,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from appium.webdriver.common.touch_action import TouchAction
 from exception.exceptions import *
 from selenium.common.exceptions import TimeoutException
-from utils import log
+import utils.log
 from utils.config import Config
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def singleton(class_):
@@ -186,7 +189,7 @@ class ElementActions:
             else:
                 return self._find_text_in_page(text)
         except:
-            log.w("页面中未找到 %s 文本" % text)
+            ("页面中未找到 %s 文本" % text)
             return False
 
     def is_element_present(self, locator, is_need_display=True):
@@ -258,7 +261,7 @@ class ElementActions:
             self.set_implicitly_wait(self.implicitly_wait)
             return self._get_element_by_locator(self.driver, locator)
         except Exception as e:
-            log.e("未能找到 %s 元素" % locator)
+            logger.exception("未能找到 %s 元素" % locator)
             self.set_implicitly_wait(self.implicitly_wait)
             return None
 
@@ -276,7 +279,7 @@ class ElementActions:
             self.set_implicitly_wait(self.implicitly_wait)
             return self._get_element_by_locator(self.driver, locator, False)
         except Exception as e:
-            log.w("未能找到 %s 元素" % locator)
+            logger.exception("未能找到 %s 元素" % locator)
             self.set_implicitly_wait(self.implicitly_wait)
             return None
 
