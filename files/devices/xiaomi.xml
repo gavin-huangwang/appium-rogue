@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config mobileName="samsungS5" mobileType="android">
+    <appium>
+        <host>127.0.0.1</host>
+        <port>4725</port>
+        <implicitlyWait>5</implicitlyWait>
+
+        <capabilities>
+            <deviceName>Xiaomi</deviceName> <!--要测试的设备名称,如：iphone6s, MI4 -->
+            <automationName>appium</automationName> <!--自动化测试平台名称appium -->
+            <platformName>Android</platformName> <!--要测试的设备平台名称,如 Android,iOS -->
+            <udid>YSBIAEGQ99EA9HW4</udid> <!-- 待测设备的udid -->
+            <platformVersion>5.0.2</platformVersion> <!-- 待测设备的版本 -->
+            <appPackage>com.wosai.cashbar</appPackage> <!--要测试的App Package名称,如: com.ecovacs -->
+            <appActivity>.core.guide.WelcomeActivity</appActivity> <!--要测试的App Activity名称,如:.EcoLogin -->
+        </capabilities>
+    </appium>
+
+    <global>
+        <timeout>30</timeout>
+        <wait>3</wait>
+        <screenrecord>true</screenrecord>
+    </global>
+</config>

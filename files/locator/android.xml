@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+    <!--locator of page map info -->
+    <page pageName="LoginPage">
+        <locator type="id" timeout="15" location="com.wosai.cashbar:id/frag_guide_page_img">img_guide_page</locator>
+        <locator type="id" timeout="3" location="com.wosai.cashbar:id/frag_guide_page_button">btn_guide_start</locator>
+        <locator type="id" timeout="3" location="com.wosai.cashbar:id/login_phone">text_username</locator>
+        <locator type="id" timeout="3" location="com.wosai.cashbar:id/login_password">text_password</locator>
+        <locator type="id" timeout="3" location="com.wosai.cashbar:id/login_button">btn_login</locator>
+        <locator type="id" timeout="3" location="com.wosai.cashbar:id/login_error_message">text_error_msg</locator>
+        <locator type="id" timeout="3" location="com.wosai.cashbar:id/frag_login_forget_password">tv_forget_password</locator>
+        <locator type="id" timeout="3" location="com.wosai.cashbar:id/login_place_holder_text">tv_login_place_holder</locator>
+    </page>
+    <page pageName="HomePage">
+        <locator type="text" timeout="3" location="收款">tvShoukuan</locator>
+        <locator type="text" timeout="3" location="账本">tvZhangben</locator>
+        <locator type="text" timeout="3" location="报表">tvBaobiao</locator>
+        <locator type="text" timeout="3" location="首页">tvShouye</locator>
+        <locator type="text" timeout="3" location="服务中心">tvFuwu</locator>
+        <locator type="text" timeout="3" location="我">tvMe</locator>
+    </page>
+</map>
