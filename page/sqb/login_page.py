@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from utils.config import Config
 from exception.exceptions import NotFoundLocatorError
 from utils.deorators import locator
-from base.action import ElementActions
+from base.action import action
 
 
 class LoginPage:
@@ -40,7 +39,7 @@ class LoginPage:
         pass
 
     def check_if_go_to_login_page(self):
-        if ElementActions().is_element_present(self.img_guide_page()):
-            ElementActions().swipe_right_to_left(count=2)
-            ElementActions().click(self.btn_guide_start())
-        return ElementActions().is_element_present(self.text_username())
+        if action.is_element_present(self.img_guide_page()):
+            action.swipe_right_to_left(count=2)
+            action.click(self.btn_guide_start())
+        return action.is_element_present(self.text_username())

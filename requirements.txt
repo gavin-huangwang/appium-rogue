@@ -1,1 +1,3 @@
 Appium-Python-Client
+pytest
+pytest-allure-adaptor

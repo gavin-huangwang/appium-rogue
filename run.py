@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import pytest
-import sys
 import argparse
-from utils.config import Config
-from os.path import isdir, join
-from exception.exceptions import StartServerTimeout
-from base.appiumserver import AppiumServer
 import os
+import sys
+from os.path import isdir, join
+import pytest
+from utils.constant import Platform
+import environment
 
 
 def list_dirs(path):
@@ -40,9 +39,8 @@ def dpath_to_lists(dpath):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dev", dest="dev_file", action="store", default="Xiaomi.xml", type=str, help="具体执行哪个设备")
-    parser.add_argument("--locator", dest="locator_file", action="store", default="android.xml", type=str,
-                        help="具体加载哪个元素配置文件")
+    parser.add_argument("--app", dest="app_name", action="store", default="sqb", type=str, help="app名称，比如sqb")
+    parser.add_argument("--dev", dest="dev_name", action="store", default="xiaomi", type=str, help="设备名称，例如xiaomi")
     parser.add_argument("--android", dest="is_android", action="store_true", default=True, help="是否是android")
     parser.add_argument("--no_android", dest="is_android", action="store_false", default=False, help="是否是iOS")
     parser.add_argument("--suites", dest="suites", action="store", type=str,
@@ -50,15 +48,20 @@ if __name__ == '__main__':
     parser.set_defaults(is_android=True)
 
     args, other_args = parser.parse_known_args()
-    config = Config(args.dev_file, args.locator_file, args.is_android)
+    # config = Config(args.dev_file, args.locator_file, args.is_android)
+
+    if args.app_name != environment.default_config[0]:
+        environment.default_config[0] = args.app_name
+
+    if args.dev_name != environment.default_config[1]:
+        environment.default_config[1] = args.dev_file
+
+    platform = Platform.ANDROID if args.is_android else Platform.IOS
+    if platform != environment.default_config[2]:
+        environment.default_config[2] = Platform.IOS
 
     sys.argv = [sys.argv[0]]
     sys.argv.extend(other_args)
-
-    appium_server = AppiumServer(config.device_config.host, config.device_config.port, config.device_config.timeout)
-
-    if not appium_server.start_server():
-        raise StartServerTimeout("在指定时间{}秒内未能启动appium server，请手动检查！".format(config.device_config.timeout))
 
     if args.suites:
         data = dpath_to_lists(args.suites)

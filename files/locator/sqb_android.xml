@@ -8,15 +8,18 @@
         <locator type="id" timeout="3" location="com.wosai.cashbar:id/login_password">text_password</locator>
         <locator type="id" timeout="3" location="com.wosai.cashbar:id/login_button">btn_login</locator>
         <locator type="id" timeout="3" location="com.wosai.cashbar:id/login_error_message">text_error_msg</locator>
-        <locator type="id" timeout="3" location="com.wosai.cashbar:id/frag_login_forget_password">tv_forget_password</locator>
-        <locator type="id" timeout="3" location="com.wosai.cashbar:id/login_place_holder_text">tv_login_place_holder</locator>
+        <locator type="id" timeout="3" location="com.wosai.cashbar:id/frag_login_forget_password">tv_forget_password
+        </locator>
+        <locator type="id" timeout="3" location="com.wosai.cashbar:id/login_place_holder_text">tv_login_place_holder
+        </locator>
     </page>
     <page pageName="HomePage">
-        <locator type="text" timeout="3" location="收款">tvShoukuan</locator>
-        <locator type="text" timeout="3" location="账本">tvZhangben</locator>
-        <locator type="text" timeout="3" location="报表">tvBaobiao</locator>
-        <locator type="text" timeout="3" location="首页">tvShouye</locator>
-        <locator type="text" timeout="3" location="服务中心">tvFuwu</locator>
-        <locator type="text" timeout="3" location="我">tvMe</locator>
+        <locator type="text" timeout="10" location="收钱吧">tv_cash_logo</locator>
+        <locator type="text" timeout="5" location="收款">tv_cash</locator>
+        <locator type="text" timeout="3" location="账本">tv_account_book</locator>
+        <locator type="text" timeout="3" location="报表">tv_report</locator>
+        <locator type="text" timeout="3" location="首页">tv_home</locator>
+        <locator type="text" timeout="3" location="服务中心">tv_service</locator>
+        <locator type="text" timeout="3" location="我">tv_personal</locator>
     </page>
 </map>

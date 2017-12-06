@@ -1,12 +1,13 @@
-from appium import webdriver
-import time
-from selenium.webdriver.support.ui import WebDriverWait
-from appium.webdriver.common.touch_action import TouchAction
-from exception.exceptions import *
-from selenium.common.exceptions import TimeoutException
-import utils.log
-from utils.config import Config
 import logging
+import time
+
+from appium import webdriver
+from appium.webdriver.common.touch_action import TouchAction
+from selenium.webdriver.support.ui import WebDriverWait
+from utils.constant import Platform
+from environment import env
+from exception.exceptions import *
+from selenium.webdriver.common.by import By
 
 logger = logging.getLogger(__name__)
 
@@ -22,17 +23,16 @@ def singleton(class_):
     return getinstance
 
 
-@singleton
-class ElementActions:
-    def __init__(self, driver: webdriver.Remote):
-        self.driver = driver
-        self.width = self.driver.get_window_size()['width']
-        self.height = self.driver.get_window_size()['height']
-        self.touch_action = TouchAction(self.driver)
-        self.dev_config = Config().device_config
-        self.implicitly_wait = Config().device_config.implicitly
-        self.set_implicitly_wait(self.implicitly_wait)
-        self.is_android = Config().is_android
+# @singleton
+class _ElementActions:
+    def __init__(self):
+        self.driver = ''
+        self.width = ''
+        self.height = ''
+        self.touch_action = ''
+        self.dev_config = ''
+        self.implicitly_wait = ''
+        self.is_android = ''
 
     def reset(self, driver: webdriver.Remote):
         """
@@ -44,10 +44,10 @@ class ElementActions:
         self.width = self.driver.get_window_size()['width']
         self.height = self.driver.get_window_size()['height']
         self.touch_action = TouchAction(self.driver)
-        self.dev_config = Config().device_config
-        self.implicitly_wait = Config().device_config.implicitly
+        self.dev_config = env.device_config
+        self.implicitly_wait = env.device_config.implicitly
         self.set_implicitly_wait(self.implicitly_wait)
-        self.is_android = Config().is_android
+        self.is_android = True if env.platform_name == Platform.ANDROID else False
         return self
 
     @staticmethod
@@ -261,7 +261,7 @@ class ElementActions:
             self.set_implicitly_wait(self.implicitly_wait)
             return self._get_element_by_locator(self.driver, locator)
         except Exception as e:
-            logger.exception("未能找到 %s 元素" % locator)
+            logger.error("未能找到 %s 元素" % locator)
             self.set_implicitly_wait(self.implicitly_wait)
             return None
 
@@ -279,7 +279,7 @@ class ElementActions:
             self.set_implicitly_wait(self.implicitly_wait)
             return self._get_element_by_locator(self.driver, locator, False)
         except Exception as e:
-            logger.exception("未能找到 %s 元素" % locator)
+            logger.error("未能找到 %s 元素" % locator)
             self.set_implicitly_wait(self.implicitly_wait)
             return None
 
@@ -309,10 +309,10 @@ class ElementActions:
         """
         location = locator.location
         by_type = locator.by_type
-        if by_type == 'name':
-            ui_value = 'new UiSelector().textContains' + '(\"' + location + '\")'
-            return driver.find_element_by_android_uiautomator(
-                ui_value) if is_single else driver.find_elements_by_android_uiautomator(ui_value)
+        if by_type == 'text':
+            xpath_value = '//*[@text=\"%s\"]' % location
+            return driver.find_element(By.XPATH, xpath_value) if is_single else driver.find_elements(By.XPATH,
+                                                                                                     xpath_value)
         else:
             return driver.find_element(by_type, location) if is_single else driver.find_elements(by_type, location)
 
@@ -328,3 +328,6 @@ class ElementActions:
             self.driver.press_keycode(int(event_list[arg]) + int(num))
         elif arg in event_list:
             self.driver.press_keycode(int(event_list[arg]))
+
+
+action = _ElementActions()

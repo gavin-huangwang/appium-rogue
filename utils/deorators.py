@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from utils.config import Config
 from functools import wraps
+
+from environment import env
 from exception.exceptions import NotFoundLocatorError
+from environment import env
 
 
 def locator(page=None, name=None):
@@ -10,7 +12,7 @@ def locator(page=None, name=None):
         @wraps(func)
         def _wrapper(self):
             func(self)
-            locator_config = Config().locator_config
+            locator_config = env.locator_config
             dict_key = func.__qualname__
             if page is not None and name is not None:
                 dict_key = page + "." + name
