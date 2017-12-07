@@ -30,3 +30,5 @@ class BasePATH:
 
     BASE_LOCATOR_CONFIG_PATH = str(
         os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "files/locator"))) + "/"
+
+    BASE_DATA_FILE_PATH = str(os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir, "files"))) + "/"

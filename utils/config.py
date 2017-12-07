@@ -10,11 +10,11 @@ def run_once(func):
     cached = {}
 
     @functools.wraps(func)
-    def wrapper(pkg):
-        if pkg in cached:
-            return cached[pkg]
-        ret = func(pkg)
-        cached[pkg] = ret
+    def wrapper(fp):
+        if fp in cached:
+            return cached[fp]
+        ret = func(fp)
+        cached[fp] = ret
         return ret
 
     return wrapper
@@ -132,6 +132,9 @@ class Locator(object):
         self.location = location
         self.timeout = timeout
         self.by_type = by_type
+
+    def __str__(self):
+        return '[Locator: %s, %s, %s, %s]' % (self.name, self.location, self.timeout, self.by_type)
 
 
 class ByType(Enum):

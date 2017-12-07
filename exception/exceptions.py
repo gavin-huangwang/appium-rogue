@@ -14,3 +14,8 @@ class NotFoundLocatorError(Exception):
 class StartServerTimeout(Exception):
     def __init__(self, *args, **kwargs):
         pass
+
+
+class NotFoundFileError(Exception):
+    def __init__(self, *args, **kwargs):
+        pass

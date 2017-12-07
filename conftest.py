@@ -2,7 +2,6 @@
 
 import pytest
 from appium import webdriver
-
 from base.action import action
 from base.appiumserver import AppiumServer
 from environment import env

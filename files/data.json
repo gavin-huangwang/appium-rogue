@@ -1,0 +1,10 @@
+{
+  "testLogin": {
+    "username": "10411116666",
+    "password": "123456"
+  },
+  "testInvalidLogin": {
+    "username": "10270951653",
+    "password": "123456"
+  }
+}

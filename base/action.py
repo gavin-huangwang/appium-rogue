@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
+
 import logging
 import time
-
 from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
 from selenium.webdriver.support.ui import WebDriverWait

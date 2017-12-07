@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import os
 from utils.constant import App, Device, Platform, BasePATH
-from utils.loader import load_device_config, load_locator_config
+from utils.config import load_device_config, load_locator_config
 
 default_config = [App.SQB, Device.XIAOMI, Platform.ANDROID]
 

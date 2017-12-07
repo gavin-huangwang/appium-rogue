@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from functools import wraps
-
-from environment import env
 from exception.exceptions import NotFoundLocatorError
 from environment import env
 
