@@ -7,6 +7,7 @@ from os.path import isdir, join
 import pytest
 from utils.constant import Platform
 import environment
+from utils.constant import Framework
 
 
 def list_dirs(path):
@@ -65,7 +66,7 @@ if __name__ == '__main__':
 
     if args.suites:
         data = dpath_to_lists(args.suites)
-        for ds in ignores('case', *dpath_to_lists(args.suites)):
+        for ds in ignores(Framework.CASE_DIR, *dpath_to_lists(args.suites)):
             for d in ds:
                 opt = "--ignore={}".format(d)
                 sys.argv.append(opt)
