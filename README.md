@@ -12,6 +12,7 @@
 - 所有的page元素定位以及case 用例集按照项目(sqb, crm)以及页面(LoginPage, HomePage等等)进行归类。
 - 配置文件分2种
 1. 设备配置文件，主要是存放运行 用例时指定设备相关信息以及appium server相关信息。
+
 > 例如xiaomi.xml
 
 ```
