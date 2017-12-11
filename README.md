@@ -11,11 +11,13 @@
 
 - 所有的page元素定位以及case 用例集按照项目(sqb, crm)以及页面(LoginPage, HomePage等等)进行归类。
 - 配置文件分2种
+
 1. 设备配置文件，主要是存放运行 用例时指定设备相关信息以及appium server相关信息。
 
 > 例如xiaomi.xml
 
 ```
+
 <?xml version="1.0" encoding="UTF-8"?>
 <config mobileName="samsungS5" mobileType="android">
     <appium>
@@ -40,9 +42,11 @@
         <screenrecord>true</screenrecord>
     </global>
 </config>
+
 ```
 
 2. 元素定位配置文件，例如sqb分2个配置文件(Andorid, iOS)
+
 > 例如sqb_android.xml
 
 ```
@@ -72,6 +76,7 @@
     </page>
 </map>
 ```
+
 - 另外全局的测试数据文件，默认读取data.json。
 
 #### 如何写case
