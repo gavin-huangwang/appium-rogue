@@ -44,7 +44,6 @@
 </config>
 
 ```
-
 2. 元素定位配置文件，例如sqb分2个配置文件(Andorid, iOS)
 
 > 例如sqb_android.xml
