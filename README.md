@@ -74,23 +74,29 @@
 - 另外全局的测试数据文件，默认读取data.json。
 
 #### 如何写case
+
 - 如何定义元素？
 1. 页面元素定义按照页面来划分，也就是说loign_page.py这个下面放的是登录页面所有元素的定义以及该页面上所涉及的常规方法
 2. 使用装饰器@locator来定义元素
 > 例如登录页面的输入用户名的元素定义可以通过下面的代码来简单定义
 
 ```
+
 class HomePage:
 @locator()
     def tv_cash_logo(self):
         pass
+        
 ```
+
 > 上面的这段意思是从配置文件sqb_android.xml读取HomePage.tv_cash_logo这段元素定义，返回的是一个Locator对象(包含type, timeout, location这3个属性)
+
 - 如何写case
 1. 写case也是按照页面来划分，比如test_login_page.py存放的是涉及登录页面的所有case
 2. 测试用例的类需要继承我上面说的AppiumTestCase，这样才能断言失败后自动截图
 3. 所有的元素操作，比如点击，输入等等，不是像我们常规理解的是对MobileElement进行操作，需要换一个理解方式，这边对元素的操作都是对一个Locator对象进行操作，我这边会把selenium对元素的操作方法重新封装一遍(在action.py这个下面)。
 > 例如对登录页面下的输入用户名控件进行输入操作
+
 
 ```
 action.input_text(self.login_page.text_username(), self.data.testLogin.username, True)
