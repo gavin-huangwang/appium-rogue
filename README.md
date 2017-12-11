@@ -98,9 +98,11 @@ class HomePage:
 > 上面的这段意思是从配置文件sqb_android.xml读取HomePage.tv_cash_logo这段元素定义，返回的是一个Locator对象(包含type, timeout, location这3个属性)
 
 - 如何写case
+
 1. 写case也是按照页面来划分，比如test_login_page.py存放的是涉及登录页面的所有case
 2. 测试用例的类需要继承我上面说的AppiumTestCase，这样才能断言失败后自动截图
 3. 所有的元素操作，比如点击，输入等等，不是像我们常规理解的是对MobileElement进行操作，需要换一个理解方式，这边对元素的操作都是对一个Locator对象进行操作，我这边会把selenium对元素的操作方法重新封装一遍(在action.py这个下面)。
+
 > 例如对登录页面下的输入用户名控件进行输入操作
 
 
