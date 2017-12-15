@@ -55,7 +55,7 @@ if __name__ == '__main__':
         environment.default_config[0] = args.app_name
 
     if args.dev_name != environment.default_config[1]:
-        environment.default_config[1] = args.dev_file
+        environment.default_config[1] = args.dev_name
 
     platform = Platform.ANDROID if args.is_android else Platform.IOS
     if platform != environment.default_config[2]:
