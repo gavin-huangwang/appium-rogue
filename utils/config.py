@@ -52,7 +52,7 @@ def load_locator_config(locator_file_path):
         for temp_node in node_list:
             if temp_node.nodeType == 1:
                 node_data = temp_node.childNodes[0].data
-                locator_name = page_name + "." + node_data
+                locator_name = page_name + "." + node_data.replace("\n", "").replace(" \r\n", "").strip()
                 locator_dict[locator_name] = Locator(node_data, temp_node.getAttribute("location"),
                                                      int(temp_node.getAttribute("timeout")),
                                                      temp_node.getAttribute("type"))
