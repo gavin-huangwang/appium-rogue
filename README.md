@@ -7,7 +7,7 @@
 这套框架整体设计结构和我之前的java版本差不多，只需要运行程序即可启动对应appium server以及自动化测试用例，前提需要在机器上配置好appium的运行环境。页面元素locator以及设备相关信息单独写到配置文件里面，测试时启动命令传这2个文件即可执行工具。1期功能已经包含所有基础框架功能。
 
 #### 详细介绍：
-上次和豪哥review之后，已经加入默认配置文件，目的在于方便写case时单用例调试。python版本截图这块参考的豪哥说的override unittest.case.TestCase里面 run这个方法(其实也就多了2行代码)。因此大家在写case的时候不是以往的继承unittest.TestCase，而是我这边自定义的一个类:AppiumTestCase
+已经加入默认运行配置文件，目的在于方便写case时单用例调试。python版本截图这块参考的override unittest.case.TestCase里面 run这个方法(其实也就多了2行代码)。因此大家在写case的时候不是以往的继承unittest.TestCase，而是我这边自定义的一个类:AppiumTestCase
 
 - 所有的page元素定位以及case 用例集按照项目(sqb, crm)以及页面(LoginPage, HomePage等等)进行归类。
 - 配置文件分2种
