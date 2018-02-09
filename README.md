@@ -92,7 +92,7 @@ class HomePage:
 @locator()
     def tv_cash_logo(self):
         pass
-        
+
 ```
 
 > 上面的这段意思是从配置文件sqb_android.xml读取HomePage.tv_cash_logo这段元素定义，返回的是一个Locator对象(包含type, timeout, location这3个属性)
