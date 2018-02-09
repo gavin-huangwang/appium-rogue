@@ -5,7 +5,7 @@ from utils.deorators import locator
 from base.action import action
 
 
-class LoginPage:
+class _LoginPage:
     @locator()
     def img_guide_page(self):
         pass
@@ -43,3 +43,6 @@ class LoginPage:
             action.swipe_right_to_left(count=2)
             action.click(self.btn_guide_start())
         return action.is_element_present(self.text_username())
+
+
+loginPage = _LoginPage()

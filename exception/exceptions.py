@@ -19,3 +19,8 @@ class StartServerTimeout(Exception):
 class NotFoundFileError(Exception):
     def __init__(self, *args, **kwargs):
         pass
+
+
+class PageReachedError(Exception):
+    def __init__(self, *args, **kwargs):
+        pass

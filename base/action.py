@@ -330,5 +330,38 @@ class _ElementActions:
         elif arg in event_list:
             self.driver.press_keycode(int(event_list[arg]))
 
+    def get_contexts(self):
+        """
+        获取当前页面的contexts
+        :return: 
+        """
+        return self.driver.contexts
+
+    def get_current_context(self):
+        """
+        获取当前context
+        :return: 
+        """
+        return self.driver.current_context
+
+    def switch_to_context(self, index=0, retry=1):
+        """
+        切换到指定index的context
+        :param index: 对应contexts的index
+        :param retry: 切换尝试次数
+        :return: 
+        """
+        current_context = self.get_current_context()
+        contexts = self.get_contexts()
+        if current_context == contexts[index]:
+            return True
+        while retry > 0:
+            self.driver.switch_to.context(contexts[index])
+            current_context = self.get_current_context()
+            retry -= 1
+            if current_context == contexts[index]:
+                return True
+        return False
+
 
 action = _ElementActions()
