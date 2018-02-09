@@ -6,6 +6,7 @@ from environment import env
 
 
 def locator(page=None, name=None):
+    """定位元素装饰器"""
     def wrapper(func):
         @wraps(func)
         def _wrapper(self):
@@ -14,6 +15,7 @@ def locator(page=None, name=None):
             dict_key = func.__qualname__
             if page is not None and name is not None:
                 dict_key = page + "." + name
+            dict_key = dict_key.lstrip('_')
             if dict_key in locator_config:
                 locator_dict = locator_config.get(dict_key)
                 return locator_dict

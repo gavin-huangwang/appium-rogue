@@ -5,7 +5,7 @@ from utils.deorators import locator
 from base.action import action
 
 
-class HomePage:
+class _HomePage:
     @locator()
     def tv_cash_logo(self):
         pass
@@ -33,3 +33,6 @@ class HomePage:
     @locator()
     def tv_personal(self):
         pass
+
+
+homePage = _HomePage()
