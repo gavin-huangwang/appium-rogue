@@ -79,7 +79,7 @@ class AppiumTestCase(TestCase):
 
             self._feedErrorsToResult(result, outcome.errors)
             if len(outcome.errors) != 0:
-                allure.attach(self._testMethodName, action.get_screenshot_as_png(), AttachmentType.PNG)
+                allure.attach(self._testMethodName, action.driver.get_screenshot_as_png(), AttachmentType.PNG)
                 take_snapshot_on_error(self._testMethodName, None)
             if outcome.success:
                 if expecting_failure:
