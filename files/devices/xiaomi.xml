@@ -17,7 +17,7 @@
     </appium>
 
     <global>
-        <timeout>30</timeout>
+        <timeout>60</timeout>
         <wait>3</wait>
         <screenrecord>true</screenrecord>
     </global>
