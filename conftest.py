@@ -21,4 +21,4 @@ def init_drive():
 def start_appium():
     appium_server = AppiumServer(env.device_config.host, env.device_config.port, env.device_config.timeout)
     if not appium_server.start_server():
-        raise StartServerTimeout("在指定时间{}秒内未能启动appium server，请手动检查！".format(env.device_config.timeout))
+        raise StartServerTimeout("在指定时间{}秒内未能启动指定{}-{}的appium server，请手动检查！".format(env.device_config.timeout, env.device_config.host, env.device_config.port))
