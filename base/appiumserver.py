@@ -21,6 +21,7 @@ class AppiumServer:
         while not is_start and (time.time() - start_time) < float(self.timeout):
             appium_line = appium_process.stdout.readline().strip().decode()
             time.sleep(1)
+            print(appium_line)
             print("---------start_server----------")
             if 'listener started' in appium_line:
                 print("---------start_server_success----------")
