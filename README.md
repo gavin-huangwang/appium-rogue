@@ -1,13 +1,29 @@
 ### Appium-Rogue 移动端自动化框架python版本
 
 #### 工具简介：
-目前采用pyhton+appium+allure作为这次移动端自动化框架支撑，目的为了减少团队的学习成本以及后期的维护压力，1期所有功能均已经开发完毕。
+目前采用jenkins+python+appium+allure作为这次移动端自动化框架支撑，目的为了减少团队的学习成本以及后期的维护压力，1期所有功能均已经开发完毕。
 
 #### 框架功能：
 这套框架整体设计结构和我之前的java版本差不多，只需要运行程序即可启动对应appium server以及自动化测试用例，前提需要在机器上配置好appium的运行环境。页面元素locator以及设备相关信息单独写到配置文件里面，测试时启动命令传这2个文件即可执行工具。1期功能已经包含所有基础框架功能。
 
+#### 执行步骤：
+以下是jenkins里面执行的shell命令
+`
+REPORT_FILE="report.xml"
+python3.6 run.py --junit-xml=$REPORT_FILE --color=yes --app=sqb --dev xiaomi --suite=sqb/login --alluredir ${WORKSPACE}/report
+`
+jenkins allure截图01(总揽)
+![](allure_screenshot01.png)
+
+jenkins allure截图02(测试用例集)
+![](allure_screenshot02.png)
+
+jenkins allure截图03(错误用例截图)
+![](allure_screenshot03.png)
+
+
 #### 详细介绍：
-上次和豪哥review之后，已经加入默认配置文件，目的在于方便写case时单用例调试。python版本截图这块参考的豪哥说的override unittest.case.TestCase里面 run这个方法(其实也就多了2行代码)。因此大家在写case的时候不是以往的继承unittest.TestCase，而是我这边自定义的一个类:AppiumTestCase
+已经加入默认配置文件，目的在于方便写case时单用例调试。python版本截图这块参考的豪哥说的override unittest.case.TestCase里面 run这个方法(其实也就多了2行代码)。因此大家在写case的时候不是以往的继承unittest.TestCase，而是我这边自定义的一个类:AppiumTestCase
 
 - 所有的page元素定位以及case 用例集按照项目(sqb, crm)以及页面(LoginPage, HomePage等等)进行归类。
 - 配置文件分2种
