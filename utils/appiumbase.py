@@ -4,6 +4,8 @@ import os
 from os.path import join, abspath, dirname
 from unittest.case import TestCase, _Outcome
 from base.action import action
+from allure.constants import AttachmentType
+import allure
 
 try:
     import simplejson as json
@@ -77,6 +79,7 @@ class AppiumTestCase(TestCase):
 
             self._feedErrorsToResult(result, outcome.errors)
             if len(outcome.errors) != 0:
+                allure.attach(self._testMethodName, action.get_screenshot_as_png(), AttachmentType.PNG)
                 take_snapshot_on_error(self._testMethodName, None)
             if outcome.success:
                 if expecting_failure:
